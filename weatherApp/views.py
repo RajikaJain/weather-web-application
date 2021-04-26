@@ -30,3 +30,7 @@ def index(request):
             "icon": list_of_data['weather'][0]['icon'],
 
         }
+        print (data)
+    else:
+        data = {}
+    return render(request,"main/index.html",data)    

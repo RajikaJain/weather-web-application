@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--go to https://cdnjs.com/libraries/bootswatch/4.5.3 and paste -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css" integrity="sha512-dQLT/B7byn2LjN/DN4zeBKpwGV6qbidV0XiMRWQOL7TGrV7FkZFldkGG+DGMU+CQnMTcRZlUI7GMWt1j6akNew==" crossorigin="anonymous" />
+    <title>Weather App</title>
+</head>
+<body>
+    <div class= "navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class= "container">
+            <a href="../" class="navbar-brand">Weather App<span style ="color:rgb(39,117,161);">
+                <strong> - Django Framework </strong>
+            </span></a>
+            <a href="http://openweathermap.org" class="nav-tech">OpenWeather - Get your API</a>
+           
+            
+        </div>
+    </div>
+
+    <br/><br/><br>
+    <div id = "jumbotron" class="jumbotron" style="text-align: center; margin-top: -50px;">
+    <h1 class = "display-5">Weather web application</h1>
+    <h5>Using Django framework</h5>
+
+    <img src ="{% static 'ímages/weather.jpg' %}" class="image" style="width:100px; margin-bottom:-50px; "></img>"
+    </div>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+     <from method="post" class ="col-md">
+         {% csrf_token %}
+         <div class= "input-group">
+             <input type="text" class="form-control" name="city" placeholder="Choose your city ...">
+             <div class= "input-group"-btn">
+                 <button type ="submit" class="btn btn-primary">Search</button>
+                 </div></div>
+     </from>
+ </nav>
+ <br> <br>
+ <div class ="row">
+     {% if country_code and coordinate and temp and pressure and humidity %}
+     <div class ="col d-flex justify-content-center">
+         <div class = "card-text-white bg-light mb-6">
+             <div class = "card-body">
+                 <h4><span class ="badge badge-primary">Country Code :</span> {{country_code}}</h4>
+                 <h4><span class ="badge badge-primary">Coordinate :</span> {{coordinate}}</h4>
+                 <h4><span class ="badge badge-primary">Forcast :</span> {{main}} <img src="https://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width: 70px;"></h4>
+                 <h4><span class ="badge badge-primary">Temperature :</span> {{temp}}</h4>
+                 <h4><span class ="badge badge-primary">Maximum temperature :</span> {{max_temp}}</h4>
+                 <h4><span class ="badge badge-primary">Minimum temperature:</span> {{min_temp}}</h4>
+                 <h4><span class ="badge badge-primary">Pressure :</span> {{pressure}}</h4>
+                 <h4><span class ="badge badge-primary"> Humidity :</span> {{humidity}}</h4>
+                 <h4><span class ="badge badge-primary">Windspeed :</span> {{wind}}</h4>
+                 <h4><span class ="badge badge-primary">Sunrise :</span> {{sunrise}}</h4>
+                 <h4><span class ="badge badge-primary">Sunset :</span> {{sunset}}</h4>
+                 <h4><span class ="badge badge-primary">Description :</span> {{description}}</h4>
+                 
+             </div>
+             {% endif %}
+         </div>
+ </div>
+</body>
+</html>
