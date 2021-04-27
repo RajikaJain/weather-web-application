@@ -15,7 +15,7 @@
             <a href="../" class="navbar-brand">Weather App<span style ="color:rgb(39,117,161);">
                 <strong> - Django Framework </strong>
             </span></a>
-            <a href="http://openweathermap.org" class="nav-tech">OpenWeather - Get your API</a>
+            <a href="http://openweathermap.org" class="nav-brand" style='text-align: right'><h6  style='text-align: right' >OpenWeather - Get your API</h6></a>
            
             
         </div>
@@ -23,39 +23,61 @@
 
     <br/><br/><br>
     <div id = "jumbotron" class="jumbotron" style="text-align: center; margin-top: -50px;">
-    <h1 class = "display-5">Weather web application</h1>
+    <h1 class = "display-5" style ="color:rgb(38, 173, 20);">Weather web application</h1>
     <h5>Using Django framework</h5>
 
-    <img src ="{% static 'ímages/weather.jpg' %}" class="image" style="width:100px; margin-bottom:-50px; "></img>"
+    <img src ="{% static 'images/weather3.jpg' %}" class="image" style="width:100px; margin-bottom:-50px; "></img>
     </div>
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-     <from method="post" class ="col-md">
+     <form method="post" class ="col-md">
          {% csrf_token %}
          <div class= "input-group">
              <input type="text" class="form-control" name="city" placeholder="Choose your city ...">
-             <div class= "input-group"-btn">
+             <div class= "input-group-btn">
                  <button type ="submit" class="btn btn-primary">Search</button>
                  </div></div>
-     </from>
+     </form>
  </nav>
  <br> <br>
+ 
+ <h1 style ="color:hsla(116, 78%, 15%, 0.911); text-align: center;  text-shadow: 2px 2px 5px red;"><span class ="badge badge-primary"  ></span> {{name}}</h1>
+
  <div class ="row">
      {% if country_code and coordinate and temp and pressure and humidity %}
      <div class ="col d-flex justify-content-center">
          <div class = "card-text-white bg-light mb-6">
              <div class = "card-body">
+                <h2  style ="color:rgb(240, 13, 100);">Forecast</h2>
+                 <h4><span class ="badge badge-primary">Forcast :</span> {{main}} <img src="https://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width: 70px;"></h4>
+                 <h4><span class ="badge badge-primary">Description :</span> {{description}}</h4>
                  <h4><span class ="badge badge-primary">Country Code :</span> {{country_code}}</h4>
                  <h4><span class ="badge badge-primary">Coordinate :</span> {{coordinate}}</h4>
-                 <h4><span class ="badge badge-primary">Forcast :</span> {{main}} <img src="https://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width: 70px;"></h4>
+                </div></div></div>
+                 <div class ="col d-flex justify-content-center">
+                    <div class = "card-text-white bg-light mb-6">
+                        <div class = "card-body"> 
+                            <h2  style ="color:rgb(240, 13, 100);">Temperature</h2>
                  <h4><span class ="badge badge-primary">Temperature :</span> {{temp}}</h4>
                  <h4><span class ="badge badge-primary">Maximum temperature :</span> {{max_temp}}</h4>
                  <h4><span class ="badge badge-primary">Minimum temperature:</span> {{min_temp}}</h4>
-                 <h4><span class ="badge badge-primary">Pressure :</span> {{pressure}}</h4>
-                 <h4><span class ="badge badge-primary"> Humidity :</span> {{humidity}}</h4>
-                 <h4><span class ="badge badge-primary">Windspeed :</span> {{wind}}</h4>
+                 
+               
+                </div></div></div>
+                <div class ="col d-flex justify-content-center">
+                   <div class = "card-text-white bg-light mb-6">
+                       <div class = "card-body">
+                        <h2  style ="color:rgb(240, 13, 100);">Sunrise and Sunset</h2>
                  <h4><span class ="badge badge-primary">Sunrise :</span> {{sunrise}}</h4>
                  <h4><span class ="badge badge-primary">Sunset :</span> {{sunset}}</h4>
-                 <h4><span class ="badge badge-primary">Description :</span> {{description}}</h4>
+                </div></div></div>
+                <div class ="col d-flex justify-content-center">
+                   <div class = "card-text-white bg-light mb-6">
+                       <div class = "card-body"> 
+                        <h2  style ="color:rgb(240, 13, 100);">More Information</h2>
+                        <h4><span class ="badge badge-primary">Pressure :</span> {{pressure}}</h4>
+                 <h4><span class ="badge badge-primary"> Humidity :</span> {{humidity}}</h4>
+                 <h4><span class ="badge badge-primary">Windspeed :</span> {{wind}}</h4>
+                 <h4><span class ="badge badge-primary">Cloud Count :</span> {{clouds}}</h4>
                  
              </div>
              {% endif %}
